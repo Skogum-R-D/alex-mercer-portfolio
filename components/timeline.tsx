@@ -44,19 +44,23 @@ export default function Timeline() {
       <motion.div
         initial="hidden"
         animate="show"
-        variants{{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.1 } },
-        }}
+        variants={
+          {
+            hidden: {},
+            show: { transition: { staggerChildren: 0.1 } },
+          }
+        }
         className="space-y-6 max-w-3xl mx-auto"
       >
         {projects.map((project) => (
           <motion.div
             key={project.title}
-            variants{{
-              hidden: { opacity: 0, y: 20 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-            }}
+            variants={
+              {
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+              }
+            }
           >
             <Card>
               <CardHeader>
