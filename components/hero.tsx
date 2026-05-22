@@ -5,40 +5,33 @@ import { Button } from "./ui/button";
 export default function Hero() {
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="min-h-screen flex flex-col justify-center items-center text-center px-4"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="text-center py-20 md:py-32"
     >
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-        className="mb-4"
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="text-5xl md:text-7xl font-bold gradient-text mb-6"
       >
-        <h1 className="text-5xl md:text-7xl font-bold gradient-text mb-2">
-          Alex Mercer
-        </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground">
-          Senior Software Engineer
-        </p>
-      </motion.div>
+        Alex Mercer
+      </motion.h1>
       <motion.p
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
-        className="max-w-2xl text-lg text-muted-foreground mb-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8"
       >
-        Building scalable systems with TypeScript, Python, and cloud-native technologies.
+        Senior Software Engineer | Cloud-Native Systems | Open Source Contributor
       </motion.p>
       <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.6 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.5 }}
       >
-        <Button variant="outline" size="lg">
-          View My Work
-        </Button>
+        <Button size="lg">View My Work</Button>
       </motion.div>
     </motion.section>
   );
