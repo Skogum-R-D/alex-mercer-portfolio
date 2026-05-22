@@ -9,13 +9,6 @@
   --primary-foreground: 210 40% 98%;
 }
 
-.dark {
-  --background: 222 47% 5%;
-  --foreground: 210 40% 98%;
-  --primary: 221 39% 11%;
-  --primary-foreground: 210 40% 98%;
-}
-
 .glassmorphism {
   background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(12px);
@@ -24,7 +17,7 @@
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #fff, #a5b4fc);
+  background: linear-gradient(90deg, #00bcd4, #009688);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
