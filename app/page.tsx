@@ -232,7 +232,7 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
-          <Button size="lg" asChild>
+          <Button size="lg" asChild={false}>
             <a href="mailto:alex.mercer@example.com" className="flex items-center">
               <Mail className="mr-2 h-4 w-4" />
               Email Me
