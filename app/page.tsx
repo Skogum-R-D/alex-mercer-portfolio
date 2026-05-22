@@ -232,12 +232,10 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
-          <Button size="lg" asChild={false}>
-            <a href="mailto:alex.mercer@example.com" className="flex items-center">
-              <Mail className="mr-2 h-4 w-4" />
-              Email Me
-            </a>
-          </Button>
+          <a href="mailto:alex.mercer@example.com" className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background h-11 px-8 rounded-md bg-primary text-primary-foreground hover:bg-primary/90">
+            <Mail className="mr-2 h-4 w-4" />
+            Email Me
+          </a>
         </motion.div>
       </motion.section>
 
