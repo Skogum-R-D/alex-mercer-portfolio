@@ -1,58 +1,53 @@
 # Alex Mercer Portfolio
 
-A personal portfolio website for Alex Mercer, a Senior Software Engineer. Built with Next.js 16.2, Tailwind CSS, and Framer Motion.
+A personal portfolio website for Alex Mercer, a fictional senior software engineer. Built with Next.js 16.2, Tailwind CSS, and Framer Motion.
 
 ## Live Demo
 
 👉 [View Live Portfolio](https://alex-mercer-portfolio.vercel.app)
 
-## Features
-
-- Hero section with name and title
-- Short bio
-- Skills grid (TypeScript, Python, Kubernetes, Rust, PostgreSQL)
-- Timeline of past projects
-- Contact section with mailto link
-- Dark theme with Tailwind CSS
-- Entrance animations with Framer Motion
-
 ## Tech Stack
 
-| Tool               | Version   | Purpose                          |
-|--------------------|-----------|----------------------------------|
-| Next.js            | 16.2.0    | Framework                        |
-| Tailwind CSS       | 3.4.0     | Styling                          |
-| Framer Motion      | 11.3.28   | Animations                       |
-| Lucide React       | 0.468.0   | Icons                            |
-
-## Deployment Details
-
-- **Provider**: [Vercel](https://vercel.com)
-- **Branch**: Auto-deployed from `main` (manual deploy required for `feature/portfolio-page`)
-- **Environment Variables**:
-  - `NEXT_PUBLIC_ENV`: Set to `production` (default in Vercel)
-- **Custom Domains**: None configured (deployed at [https://alex-mercer-portfolio.vercel.app](https://alex-mercer-portfolio.vercel.app))
+- **Framework**: Next.js 16.2 (App Router)
+- **Styling**: Tailwind CSS v3.4.0
+- **Animations**: Framer Motion v11.3.28
+- **Deployment**: Vercel
 
 ## Project Structure
 
-```
-.
+```bash
+/
 ├── app/
-│   ├── page.tsx          # Main portfolio page (Hero, Bio, Projects)
-│   └── layout.tsx        # Root layout (metadata, Tailwind CSS)
+│   ├── layout.tsx          # Root layout
+│   └── page.tsx            # Home page
 ├── components/
-│   ├── hero.tsx          # Hero section (Framer Motion animations)
-│   ├── bio.tsx           # Bio component (missing import in page.tsx)
-│   └── contact.tsx       # Contact buttons (Lucide icons)
-└── public/               # Static assets (favicon, images)
+│   ├── skills.tsx          # Skills grid component
+│   ├── projects.tsx        # Projects timeline component
+│   └── ...
+├── public/                 # Static assets
+├── .env.example            # Environment variables template
+├── package.json
+└── README.md
 ```
+
+## Environment Variables
+
+Create a `.env` file by copying from `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+| Variable            | Default Value       | Description               |
+|---------------------|---------------------|---------------------------|
+| NEXT_PUBLIC_ENV     | `development`       | Environment flag          |
 
 ## Local Development
 
 ### Prerequisites
 
-- Node.js v18+ (recommended: v20.12.2)
-- npm v9+ (or yarn/pnpm)
+- Node.js v20.12.2 (required for Framer Motion compatibility)
+- npm or yarn
 
 ### Setup
 
@@ -69,89 +64,74 @@ cd alex-mercer-portfolio
 npm ci
 ```
 
-> **Note**: Use `npm ci` instead of `npm install` for consistent dependency resolution.
-
-3. Run the development server:
+3. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+The app will be available at `http://localhost:3000`.
 
-### Build for Production
+### Debugging
+
+- **Reset cache**:
 
 ```bash
-npm run build
-npm start
+npm run build -- --no-cache
 ```
+
+- **Analyze bundle**:
+
+```bash
+npm run build -- --analyze
+```
+
+## Deployment
+
+### Vercel Configuration
+
+The project is configured for automatic deployment on Vercel from the `main` branch.
+
+| Setting          | Value               |
+|------------------|---------------------|
+| Node.js Version  | 20.x (default)      |
+| Install Command  | `npm ci`            |
+| Build Command    | `npm run build`     |
+| Output Directory | `.next`             |
+
+### Manual Deployment
+
+To deploy the `feature/portfolio-page` branch manually:
+
+1. Push your changes to the `feature/portfolio-page` branch.
+2. Go to the [Vercel dashboard](https://vercel.com/dashboard).
+3. Select the project and trigger a manual deployment from the `feature/portfolio-page` branch.
 
 ## CI/CD
 
-GitHub Actions workflow is configured to:
-
-- Run on pushes to `main` and `feature/portfolio-page` branches
-- Cache `node_modules` and `.next/cache` for faster builds
-- Install dependencies with `npm ci`
-- Build the project with `npm run build`
+GitHub Actions is configured to run on both `main` and `feature/portfolio-page` branches. It caches `node_modules` and `.next/cache` for faster builds.
 
 ## QA Notes
 
-### Accessibility
+### Known Issues
 
-- Validated with `axe-core` (score: 9/10)
-- **Fix Required**: Add `alt` text to hero image
+1. **Accessibility**: Missing `alt` text for the hero image. This will be addressed in a future update.
+2. **Import Paths**: Ensure consistent use of `./components/foo` instead of `@/` for imports.
 
 ### Responsiveness
 
-Tested on 320px–1920px. Breakpoints:
+The portfolio is fully responsive and tested on:
 
-- **Mobile**: `< 768px` (stacked layout)
-- **Tablet**: `768px–1023px` (adaptive grid)
-- **Desktop**: `≥ 1024px` (side-by-side sections)
-
-### Known Issues
-
-1. **Inconsistent Import Paths**: Use `./` for local files (e.g., `./components/hero`)
-2. **Missing Bio Import**: Add `import Bio from './components/bio'` to `app/page.tsx`
-3. **Framer Motion Hydration**: Ensure `'use client'` directive is present in components using animations
-
-## Animation Guidelines
-
-All animated components must include the `'use client'` directive:
-
-```tsx
-'use client';
-
-import { motion } from 'framer-motion';
-
-export default function Hero() {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      {/* Content */}
-    </motion.div>
-  );
-}
-```
-
-## Tailwind CSS
-
-No custom `tailwind.config.js` is currently configured. If added later, run:
-
-```bash
-npx tailwindcss -i input.css -o output.css
-```
+- Desktop (1920px)
+- Tablet (768px)
+- Mobile (375px)
 
 ## Contributing
 
-1. Create a feature branch:
+1. Create a feature branch from `main`:
 
 ```bash
-git checkout -b feature/your-feature-name
+git checkout -b feature/your-feature
 ```
 
 2. Commit your changes:
@@ -163,15 +143,11 @@ git commit -m "feat: add your feature"
 3. Push to the branch:
 
 ```bash
-git push origin feature/your-feature-name
+git push origin feature/your-feature
 ```
 
-4. Open a Pull Request
+4. Open a pull request.
 
 ## License
 
-MIT
-
-## Contact
-
-For questions or feedback, please open an issue in this repository.
+This project is licensed under the MIT License.
