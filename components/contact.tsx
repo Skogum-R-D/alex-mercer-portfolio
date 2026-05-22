@@ -31,7 +31,7 @@ export default function Contact() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.5 }}
       >
-        <Button asChild size="lg">
+        <Button size="lg">
           <a href="mailto:alex.mercer@example.com">Email Me</a>
         </Button>
       </motion.div>
