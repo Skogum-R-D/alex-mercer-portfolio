@@ -29,17 +29,21 @@ export default function Skills() {
       <motion.div
         initial="hidden"
         animate="show"
-        variants{{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.1 } },
-        }}
+        variants={
+          {
+            hidden: {},
+            show: { transition: { staggerChildren: 0.1 } },
+          }
+        }
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
       >
         {skills.map((skill) => (
-          <motion.div key={skill.name} variants{{
-            hidden: { opacity: 0, y: 20 },
-            show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-          }}>
+          <motion.div key={skill.name} variants={
+            {
+              hidden: { opacity: 0, y: 20 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            }
+          }>
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-2xl">
