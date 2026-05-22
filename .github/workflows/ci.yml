@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, feature/portfolio-page]
   pull_request:
-    branches: [main]
+    branches: [main, feature/portfolio-page]
 
 jobs:
   test:
@@ -28,10 +28,12 @@ jobs:
         run: npm run lint
 
       - name: Run TypeScript type checking
-        run: npx tsc --noEmit
+        run: npx tsc --noEmit --incremental false
 
       - name: Build Next.js application
         run: npm run build
+        env:
+          NEXT_PUBLIC_ENV: "test"
 
       - name: Cache Next.js build
         uses: actions/cache@v3
@@ -39,6 +41,6 @@ jobs:
           path: |
             .next/cache
             node_modules
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('package.json') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-
